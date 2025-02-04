@@ -1,0 +1,32 @@
+/* Custom CSS for application name underline and hover effects */
+.application-name {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block; /* Ensure the underline only spans the text width */
+  }
+  
+  .application-name.selected {
+    color: #0d6efd; /* Bootstrap primary color */
+  }
+  
+  .application-name.selected::after {
+    content: "";
+   
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 2px;
+    background-color: #0d6efd; /* Bootstrap primary color */
+  }
+  
+  .application-name:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #dee2e6; /* Light gray for hover */
+  }
