@@ -125,7 +125,7 @@ const ApplicationForm = () => {
   const handlePreviousDocument = () => {
     if (selectedApplication === null || selectedDocument === null) return;
   
-    const currentApp = applications[selectedApplication];
+    // const currentApp = applications[selectedApplication];
     const prevDocIndex = selectedDocument - 1;
   
     
