@@ -28,14 +28,19 @@ const ApplicationForm = () => {
     setInputValue("");
   };
 
+
   const handleDelete = (index) => {
     const updatedApplications = applications.filter((_, i) => i !== index);
     setApplications(updatedApplications);
     if (selectedApplication === index) {
       setSelectedApplication(null);
       setSelectedDocument(null);
+    } else if (selectedApplication > index) {
+     
+      setSelectedApplication((prev) => prev - 1);
     }
   };
+  
 
   const handleAddDocument = () => {
     if (selectedApplication === null) return;
@@ -48,7 +53,7 @@ const ApplicationForm = () => {
       return app;
     });
     setApplications(updatedApplications);
-    setSelectedDocument(applications[selectedApplication].documents.length); // Select the newly added document
+    setSelectedDocument(applications[selectedApplication].documents.length); 
     setDocModal(false);
     setDocName("");
   };
@@ -62,7 +67,7 @@ const ApplicationForm = () => {
       setFile(null);
       setUploadStatus("");
       if (fileInputRef.current) {
-        fileInputRef.current.value = ""; // Reset the file input
+        fileInputRef.current.value = ""; 
       }
     }
   };
@@ -95,25 +100,55 @@ const ApplicationForm = () => {
     setSelectedDocument(docIndex);
   };
 
+  
   const handleNextDocument = () => {
-    if (selectedApplication !== null && selectedDocument !== null) {
-      const nextDocIndex =
-        (selectedDocument + 1) %
-        applications[selectedApplication].documents.length;
+    if (selectedApplication === null || selectedDocument === null) return;
+  
+    const currentApp = applications[selectedApplication];
+    const nextDocIndex = selectedDocument + 1;
+    if (nextDocIndex < currentApp.documents.length) {
       setSelectedDocument(nextDocIndex);
+    } else {
+    
+      const nextAppIndex = selectedApplication + 1;
+      if (nextAppIndex < applications.length) {
+        setSelectedApplication(nextAppIndex);
+        setSelectedDocument(0);
+      } else {
+        if (applications.length === 0) return;
+        setSelectedApplication(0);
+        setSelectedDocument(0);
+      }
     }
   };
-
+  
   const handlePreviousDocument = () => {
-    if (selectedApplication !== null && selectedDocument !== null) {
-      const prevDocIndex =
-        (selectedDocument -
-          1 +
-          applications[selectedApplication].documents.length) %
-        applications[selectedApplication].documents.length;
+    if (selectedApplication === null || selectedDocument === null) return;
+  
+    const currentApp = applications[selectedApplication];
+    const prevDocIndex = selectedDocument - 1;
+  
+    
+    if (prevDocIndex >= 0) {
       setSelectedDocument(prevDocIndex);
+    } else {
+      
+      const prevAppIndex = selectedApplication - 1;
+      if (prevAppIndex >= 0) {
+        const prevApp = applications[prevAppIndex];
+        setSelectedApplication(prevAppIndex);
+        setSelectedDocument(prevApp.documents.length - 1);
+      } else {
+        
+        if (applications.length === 0) return;
+        const lastAppIndex = applications.length - 1;
+        const lastApp = applications[lastAppIndex];
+        setSelectedApplication(lastAppIndex);
+        setSelectedDocument(lastApp.documents.length - 1);
+      }
     }
   };
+  
 
   const handleDragOver = (e) => {
     e.preventDefault();
