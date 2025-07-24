@@ -28,3 +28,6 @@ To run this project locally:
 2. Navigate to the project directory:
    ```bash
    cd frontend   
+3. Start application:
+```bash
+npm start
