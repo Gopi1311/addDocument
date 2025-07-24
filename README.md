@@ -29,5 +29,5 @@ To run this project locally:
    ```bash
    cd frontend   
 3. Start application:
-```bash
+   ```bash
    npm start
