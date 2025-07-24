@@ -30,4 +30,4 @@ To run this project locally:
    cd frontend   
 3. Start application:
 ```bash
-npm start
+   npm start
