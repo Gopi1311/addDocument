@@ -15,7 +15,7 @@ A simple and responsive web application that allows users to add, manage, and vi
 
 ## 💻 Technologies Used
 
-- **Frontend:** HTML, CSS, JavaScript (or React if applicable)
+- **Frontend:** HTML, CSS, React js, Bootstrap
 - **Hosting:** Netlify
 
 ## 📦 Getting Started
