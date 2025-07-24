@@ -27,7 +27,10 @@ To run this project locally:
    git clone https://github.com/Gopi1311/addDocument.git
 2. Navigate to the project directory:
    ```bash
-   cd frontend   
-3. Start application:
+   cd frontend
+3. Install Dependency
+   ```bash
+   npm install   
+4. Start application:
    ```bash
    npm start
